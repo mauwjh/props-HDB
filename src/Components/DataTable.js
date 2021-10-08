@@ -15,6 +15,8 @@ import Remove from "@material-ui/icons/Remove";
 import SaveAlt from "@material-ui/icons/SaveAlt";
 import Search from "@material-ui/icons/Search";
 import ViewColumn from "@material-ui/icons/ViewColumn";
+import Info from "@material-ui/icons/Info"
+import {Link} from 'react-router-dom'
 
 const tableIcons = {
   Add: AddBox,
@@ -26,6 +28,7 @@ const tableIcons = {
   Export: SaveAlt,
   Filter: FilterList,
   FirstPage: FirstPage,
+  Info: Info,
   LastPage: LastPage,
   NextPage: ChevronRight,
   PreviousPage: ChevronLeft,
@@ -41,13 +44,13 @@ const DataTable = (props) => {
 
   useEffect(() => {
     setData(
-      props.data?.map((a, b) => ({
-        id: b,
-        town: a.town,
-        flatType: a.flat_type,
-        leaseDate: a.lease_commence_date,
-        squareArea: parseInt(a.floor_area_sqm),
-        price: parseInt(a.resale_price),
+      props.data?.map((element, index) => ({
+        id: index,
+        town: element.town,
+        flatType: element.flat_type,
+        leaseDate: element.lease_commence_date,
+        squareArea: parseInt(element.floor_area_sqm),
+        price: parseInt(element.resale_price),
       }))
     );
   }, [props.data]);
@@ -57,13 +60,16 @@ const DataTable = (props) => {
       <MaterialTable
         icons={tableIcons}
         columns={[
-          { title: "Town", field: "town", defaultSort: "asc" },
+          { title: "Town", field: "town", defaultSort: "asc", render: rowData => <Link to={`/search/${rowData.id}`}>{rowData.town}</Link> },
           { title: "Flat Type", field: "flatType" },
           { title: "Lease Date", field: "leaseDate", type: "date" },
           { title: "Size (sqm)", field: "squareArea" },
           { title: "Price", field: "price" },
         ]}
         data={data}
+        components={{
+          OverlayLoading: props => (<div></div>)
+        }}
         title="HDB Transactions"
         options={{
           exportButton: true,
@@ -71,9 +77,9 @@ const DataTable = (props) => {
           pageSize: 5,
           pageSizeOptions: [5, 50, 100, 500],
           thirdSortClick: false,
+          isLoading: true,
+          loadingType: 'overlay'
         }}
-        onRowClick= {(event) => {
-          console.log(event.target.value)}}
       />
     </div>
   );
