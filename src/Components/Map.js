@@ -1,6 +1,6 @@
 import React from 'react'
 import GoogleMapReact from 'google-map-react'
-import '../Map.css'
+import './Map.css'
 
 const Map = ({ location, zoomLevel }) => (
   <div className="map">
