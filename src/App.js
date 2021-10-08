@@ -27,9 +27,7 @@ function App() {
 
   return (
     <div className="App">
-      <Map zoomLevel={17} location={location} />
-      <EnhancedTable />
-      console.log(process.env.REACT_APP_API_KEY)
+      
     </div>
   );
 }
