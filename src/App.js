@@ -40,8 +40,7 @@ function App() {
     <div className="App">
       <ThemeProvider theme={theme}>
         <ButtonAppBar />
-
-      <DataTable data={data?.records} />
+        <DataTable data={data?.records} />
       </ThemeProvider>
     </div>
   );

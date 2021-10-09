@@ -1,4 +1,4 @@
-import MaterialTable from "material-table";
+import MaterialTable from "@material-table/core";
 import React, { useState, useEffect } from "react";
 import AddBox from "@material-ui/icons/AddBox";
 import ArrowUpward from "@material-ui/icons/ArrowUpward";
@@ -15,8 +15,9 @@ import Remove from "@material-ui/icons/Remove";
 import SaveAlt from "@material-ui/icons/SaveAlt";
 import Search from "@material-ui/icons/Search";
 import ViewColumn from "@material-ui/icons/ViewColumn";
-import Info from "@material-ui/icons/Info"
-import {Link} from 'react-router-dom'
+import Info from "@material-ui/icons/Info";
+import CircularProgress from "@mui/material/CircularProgress";
+import { Link } from "react-router-dom";
 
 const tableIcons = {
   Add: AddBox,
@@ -58,27 +59,36 @@ const DataTable = (props) => {
   return (
     <div style={{ maxWidth: "100%" }}>
       <MaterialTable
+        localization={{
+          body: {
+            emptyDataSourceMessage: <CircularProgress />,
+          },
+        }}
         icons={tableIcons}
         columns={[
-          { title: "Town", field: "town", defaultSort: "asc", render: rowData => <Link to={`/search/${rowData.id}`}>{rowData.town}</Link> },
-          { title: "Flat Type", field: "flatType" },
-          { title: "Lease Date", field: "leaseDate", type: "date" },
-          { title: "Size (sqm)", field: "squareArea" },
-          { title: "Price", field: "price" },
+          {
+            title: "Town",
+            field: "town",
+            defaultSort: "asc",
+            render: (rowData) => (
+              <Link to={`/search/${rowData.id}`}>{rowData.town}</Link>
+            ),
+          },
+          { title: "Flat Type", field: "flatType", align: 'justify' },
+          { title: "Lease Date", field: "leaseDate", type: 'numeric', align: 'justify' },
+          { title: "Size (sqm)", field: "squareArea", type: 'numeric', align: 'justify' },
+          { title: "Price", field: "price", type: 'numeric', align: 'justify'},
         ]}
         data={data}
-        components={{
-          OverlayLoading: props => (<div></div>)
-        }}
         title="HDB Transactions"
         options={{
           exportButton: true,
-          filtering: true, 
+          filtering: true,
           pageSize: 5,
           pageSizeOptions: [5, 50, 100, 500],
           thirdSortClick: false,
           isLoading: true,
-          loadingType: 'overlay'
+          loadingType: "overlay",
         }}
       />
     </div>
