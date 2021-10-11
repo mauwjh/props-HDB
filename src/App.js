@@ -1,9 +1,10 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-// import Map from "./Components/Map";
+import { Route, Switch } from "react-router";
 import ButtonAppBar from "./Components/Navbar";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import DataTable from "./Components/DataTable";
+import Transaction from "./Components/Transaction";
 
 const theme = createTheme({
   palette: {
@@ -30,19 +31,22 @@ function App() {
       .catch(() => console.log("error"));
   }, []);
 
-  // const location = {
-  //   address: "374 Laurel Wood Avenue",
-  //   lat: 1.325416,
-  //   lng: 103.791898,
-  // };
-
   return (
-    <div className="App">
-      <ThemeProvider theme={theme}>
-        <ButtonAppBar />
-        <DataTable data={data?.records} />
-      </ThemeProvider>
-    </div>
+    <ThemeProvider theme={theme}>
+      <ButtonAppBar />
+      <div className="App">
+        <main>
+          <Switch>
+            <Route path="/search/:id">
+              <Transaction data={data?.records} />
+            </Route>
+            <Route path="/search">
+              <DataTable data={data?.records} />
+            </Route>
+          </Switch>
+        </main>
+      </div>
+    </ThemeProvider>
   );
 }
 

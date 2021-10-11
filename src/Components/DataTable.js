@@ -46,7 +46,7 @@ const DataTable = (props) => {
   useEffect(() => {
     setData(
       props.data?.map((element, index) => ({
-        id: index,
+        id: element._id,
         town: element.town,
         flatType: element.flat_type,
         leaseDate: element.lease_commence_date,
@@ -75,9 +75,9 @@ const DataTable = (props) => {
             ),
           },
           { title: "Flat Type", field: "flatType", align: 'justify' },
-          { title: "Lease Date", field: "leaseDate", type: 'numeric', align: 'justify' },
-          { title: "Size (sqm)", field: "squareArea", type: 'numeric', align: 'justify' },
-          { title: "Price", field: "price", type: 'numeric', align: 'justify'},
+          { title: "Lease Date", field: "leaseDate", align: 'justify' },
+          { title: "Size (sqm)", field: "squareArea", align: 'justify' },
+          { title: "Price", field: "price", align: 'justify'},
         ]}
         data={data}
         title="HDB Transactions"
