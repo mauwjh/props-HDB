@@ -1,0 +1,12 @@
+.info-container{
+  display: flex;
+  width: 50%;
+  flex-flow: column;
+  text-align: left;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.info-header {
+  font-weight: bold;
+}

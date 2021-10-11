@@ -1,14 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Information from "./Information";
 import Map from "./Map";
+import './Transaction.css'
 
 const Transaction = (props) => {
   const params = useParams().id;
   const [data, setData] = useState([]);
   const [location, setLocation] = useState({});
+  const headers = {
+    town: "Town",
+    price: "Resale Price",
+    blockNum: "Block Number",
+    streetName: "Street Name",
+    flatType: "Flat Type",
+    squareArea: "Area (sqm)",
+    leaseDate: "Lease Commencement Date",
+    flatModel: "Flat Model",
+    resaleDate: "Transaction Date",
+  };
 
   useEffect(() => {
-    const transaction = props.data?.find((element) => element._id == params);
+    const transaction = props.data?.find(
+      (element) => parseInt(element._id) === parseInt(params)
+    );
 
     setData({
       id: transaction?._id,
@@ -23,7 +38,7 @@ const Transaction = (props) => {
       resaleDate: transaction?.month,
       storeyRange: transaction?.storey_range,
     });
-    
+
     const address = `${data?.blockNum}+${data?.streetName
       ?.split(" ")
       .join("+")}`;
@@ -36,7 +51,7 @@ const Transaction = (props) => {
         .then((data) =>
           setLocation({
             address: data.results[0].formatted_address,
-            lat: data.results[0].geometry.location.lat, 
+            lat: data.results[0].geometry.location.lat,
             lng: data.results[0].geometry.location.lng,
           })
         )
@@ -47,7 +62,18 @@ const Transaction = (props) => {
   console.log(location);
   console.log(data);
 
-  return <Map location={location} zoomLevel={17} />;
+  return (
+    <>
+      <Map location={location} zoomLevel={17} />
+      <div className="transaction-container">
+        {Object.keys(headers).map((element, index) => {
+          return (
+            <Information key={index} headers={headers[element]} values={data[element]} />
+          );
+        })}
+      </div>
+    </>
+  );
 };
 
 export default Transaction;

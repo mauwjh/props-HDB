@@ -48,6 +48,8 @@ const DataTable = (props) => {
       props.data?.map((element, index) => ({
         id: element._id,
         town: element.town,
+        block: element.block,
+        streetName: element.street_name,
         flatType: element.flat_type,
         leaseDate: element.lease_commence_date,
         squareArea: parseInt(element.floor_area_sqm),
@@ -71,7 +73,7 @@ const DataTable = (props) => {
             field: "town",
             defaultSort: "asc",
             render: (rowData) => (
-              <Link to={`/search/${rowData.id}`}>{rowData.town}</Link>
+              <Link to={`/search/${rowData.id}`}>{rowData.block} {rowData.streetName}</Link>
             ),
           },
           { title: "Flat Type", field: "flatType", align: 'justify' },
@@ -80,7 +82,7 @@ const DataTable = (props) => {
           { title: "Price", field: "price", align: 'justify'},
         ]}
         data={data}
-        title="HDB Transactions"
+        title="Resale Transactions"
         options={{
           exportButton: true,
           filtering: true,
