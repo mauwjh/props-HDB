@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Information from "./Information";
-import Map from "./Map";
+import MapAPI from './MapAPI';
 import './Transaction.css'
 
 const Transaction = (props) => {
@@ -64,7 +64,8 @@ const Transaction = (props) => {
 
   return (
     <>
-      <Map location={location} zoomLevel={17} />
+      {/* <Map location={location} zoomLevel={17} /> */}
+      <MapAPI location={location}/>
       <div className="transaction-container">
         {Object.keys(headers).map((element, index) => {
           return (
