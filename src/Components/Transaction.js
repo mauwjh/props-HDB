@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Information from "./Information";
-import MapAPI from './MapAPI';
-import './Transaction.css'
+import MapAPI from "./MapAPI";
+import "./Transaction.css";
+import TransactionTable from "./TransactionTables";
+import Typography from '@mui/material/Typography';
 
 const Transaction = (props) => {
   const params = useParams().id;
@@ -15,7 +17,7 @@ const Transaction = (props) => {
     streetName: "Street Name",
     flatType: "Flat Type",
     squareArea: "Area (sqm)",
-    leaseDate: "Lease Commencement Date",
+    leaseDate: "Lease Start Date",
     flatModel: "Flat Model",
     resaleDate: "Transaction Date",
   };
@@ -64,15 +66,24 @@ const Transaction = (props) => {
 
   return (
     <>
-      {/* <Map location={location} zoomLevel={17} /> */}
-      <MapAPI location={location}/>
+      <Typography variant='body1' component='h2'>
+      <h2 className='header'>Blk {data.blockNum}, {data?.streetName?.toLowerCase().split(' ').map(a => a.slice(0,1).toUpperCase()+a.slice(1)).join(' ')}</h2>
+      <MapAPI location={location} />
+      <div className='header' style={{marginTop: '-0.75%', fontWeight: 400}}>*1km circle radius</div>
       <div className="transaction-container">
         {Object.keys(headers).map((element, index) => {
           return (
-            <Information key={index} headers={headers[element]} values={data[element]} />
+            <Information
+              key={index}
+              headers={headers[element]}
+              values={data[element]}
+            />
           );
         })}
       </div>
+      <h2 className='header' style={{position: 'relative', zIndex: 5}}>Transaction history for similar {data?.flatType?.slice(0,2)+data?.flatType?.slice(2,3)?.toUpperCase()+data?.flatType?.toLowerCase()?.slice(3)} units in {data?.town?.toLowerCase().split(' ').map(a => a.slice(0,1).toUpperCase()+a.slice(1)).join(' ')} Town</h2>
+      </Typography>
+      <TransactionTable data={props.data} transaction={data} />
     </>
   );
 };

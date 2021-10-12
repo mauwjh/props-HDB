@@ -4,4 +4,16 @@
   width: 80%;
   max-width: 1800px;
   margin: 0 auto;
+  margin-bottom: 50px;
+  border: 1px solid #bcdbdc;
+  border-radius: 5px;
+}
+
+.header {
+  width: 80%;
+  max-width: 1800px; 
+  text-align: left;
+  margin: 0 auto; 
+  margin-top: 1%;
+  margin-bottom: 1%
 }

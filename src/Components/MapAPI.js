@@ -6,16 +6,16 @@ const containerStyle = {
   maxWidth: '1800px',
   height: '60vh',
   margin: '0 auto',
-  marginTop: '2%',
   marginBottom: '1%',
-  border: '3px solid grey'
+  border: '1px solid #bcdbdc',
+  borderRadius: '5px'
 };
 
 const options = {
-  strokeColor: '#FF0000',
+  strokeColor: '#4f6d7a',
   strokeOpacity: 0.8,
   strokeWeight: 2,
-  fillColor: '#FF0000',
+  fillColor: '#56A3A6',
   fillOpacity: 0.35,
   clickable: false,
   draggable: false,
@@ -27,8 +27,8 @@ const options = {
 
 const Map = ({location}) => {
   const center = {
-    lat: location.lat,
-    lng: location.lng
+    lat: location?.lat,
+    lng: location?.lng
   };
 
   return (

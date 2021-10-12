@@ -9,11 +9,11 @@ import {Link} from 'react-router-dom'
 
 export default function ButtonAppBar() {
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, minWidth: '100%' }}>
       <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            HDB-Props
+        <Toolbar sx={{ width: '80%', maxWidth: '1800px', margin: '0 auto', height: '80px' }}>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1, fontWeight: 600, }}>
+            HDB-PROPS
           </Typography>
           <Button color="inherit">Dashboard</Button>
           <Button color="inherit"><Link to='/search' style={{textDecoration: 'none', color: 'inherit'}}>Search</Link></Button>
