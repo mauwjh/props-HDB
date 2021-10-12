@@ -133,6 +133,7 @@ const TransactionTable = (props) => {
               field: "price",
               align: "justify",
               defaultSort: "desc",
+              render: (rowData) => `S$${rowData?.price?.toLocaleString()}`,
             },
           ]}
           data={data}
@@ -141,13 +142,14 @@ const TransactionTable = (props) => {
             exportButton: true,
             filtering: true,
             pageSize: 5,
-            pageSizeOptions: [5, 10, 50, 100, 500],
+            pageSizeOptions: [5,10,50,100,500],
             thirdSortClick: false,
             maxBodyHeight: "50vh",
             header: true,
             showTitle: false,
             search: false,
             draggable: false,
+            showFirstLastPageButtons: false,  
             headerStyle: {
               position: "sticky",
               height: 0,

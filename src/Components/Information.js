@@ -7,7 +7,7 @@ const Information = ({ headers, values }) => {
     <div className='info-container'>
       <Typography>
       <div className='info-header'>{headers}</div>
-      <div className='info-value'>{isNaN(values) ? values : values.toLocaleString()}</div>
+      <div className='info-value'>{headers === 'Resale Price' ? `S$${values?.toLocaleString()}` : values}</div>
       </Typography>
     </div>
   );

@@ -9,6 +9,7 @@ import "@fontsource/mulish/300.css";
 import "@fontsource/mulish/400.css";
 import "@fontsource/mulish/500.css";
 import "@fontsource/mulish/700.css";
+import Dashboard from "./Components/Dashboard";
 
 let theme = createTheme({
   typography: {
@@ -61,6 +62,9 @@ function App() {
             </Route>
             <Route path="/search">
               <DataTable data={data?.records} />
+            </Route>
+            <Route path="/">
+              <Dashboard data={data?.records} />
             </Route>
           </Switch>
         </main>
