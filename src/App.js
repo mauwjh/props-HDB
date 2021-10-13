@@ -2,14 +2,19 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import { Route, Switch } from "react-router";
 import ButtonAppBar from "./Components/Navbar";
-import { createTheme, ThemeProvider, responsiveFontSizes } from "@mui/material/styles";
-import DataTable from "./Components/DataTable";
+import {
+  createTheme,
+  ThemeProvider,
+  responsiveFontSizes,
+} from "@mui/material/styles";
 import Transaction from "./Components/Transaction";
 import "@fontsource/mulish/300.css";
 import "@fontsource/mulish/400.css";
 import "@fontsource/mulish/500.css";
 import "@fontsource/mulish/700.css";
 import Dashboard from "./Components/Dashboard";
+import SearchSpecific from "./Components/SearchSpecific";
+import Search from "./Components/Search";
 
 let theme = createTheme({
   typography: {
@@ -34,7 +39,7 @@ let theme = createTheme({
   },
 });
 
-theme = responsiveFontSizes(theme)
+theme = responsiveFontSizes(theme);
 
 function App() {
   const [data, setData] = useState();
@@ -57,11 +62,14 @@ function App() {
       <div className="App">
         <main>
           <Switch>
+            <Route path="/criteria/:criteria">
+              <SearchSpecific data={data?.records} />
+            </Route>
             <Route path="/search/:id">
               <Transaction data={data?.records} />
             </Route>
             <Route path="/search">
-              <DataTable data={data?.records} />
+              <Search data={data?.records} />
             </Route>
             <Route path="/">
               <Dashboard data={data?.records} />

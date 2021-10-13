@@ -1,5 +1,5 @@
 import React from "react";
-import { VictoryLine, VictoryChart } from "victory";
+import { VictoryLine, VictoryChart, VictoryAxis } from "victory";
 
 const LineGraph = ({ data }) => {
   
@@ -17,6 +17,10 @@ const LineGraph = ({ data }) => {
     }}
     data={data}
     />
+     <VictoryAxis style={{ 
+    axis: {stroke: "transparent"}, 
+    ticks: {stroke: "transparent"},
+  }} />
   </VictoryChart>
     </div>
   );

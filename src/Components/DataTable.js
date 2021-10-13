@@ -1,5 +1,4 @@
 import MaterialTable from "@material-table/core";
-import React, { useState, useEffect } from "react";
 import AddBox from "@material-ui/icons/AddBox";
 import ArrowUpward from "@material-ui/icons/ArrowUpward";
 import Check from "@material-ui/icons/Check";
@@ -17,9 +16,8 @@ import Search from "@material-ui/icons/Search";
 import ViewColumn from "@material-ui/icons/ViewColumn";
 import Info from "@material-ui/icons/Info";
 import CircularProgress from "@mui/material/CircularProgress";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "@fontsource/mulish/300.css";
-import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
 
 const tableIcons = {
@@ -44,23 +42,8 @@ const tableIcons = {
 };
 
 const DataTable = (props) => {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    setData(
-      props.data?.map((element) => ({
-        id: element._id,
-        town: element.town,
-        block: element.block,
-        streetName: element.street_name,
-        flatType: element.flat_type,
-        leaseDate: element.lease_commence_date,
-        squareArea: parseInt(element.floor_area_sqm),
-        price: parseInt(element.resale_price),
-        address: element.block + " " + element.street_name,
-      }))
-    );
-  }, [props.data]);
+  const data = props.data
+  const history = useHistory()
 
   return (
     <Typography>
@@ -77,6 +60,7 @@ const DataTable = (props) => {
       >
         <MaterialTable
           style={{ boxShadow: "none" }}
+          onRowClick={(event, rowData) => history.push(`/search/${rowData.id}`)}
           localization={{
             body: {
               emptyDataSourceMessage: <CircularProgress />,
@@ -84,23 +68,12 @@ const DataTable = (props) => {
           }}
           icons={tableIcons}
           columns={[
+            { title: "Town", field: "town", align: "justify", defaultSort: "asc", },
             {
-              title: "Town",
-              field: "town",
-              defaultSort: "asc",
+              title: "Address",
+              field: "address",
               render: (rowData) => (
-                <Button>
-                  <Link
-                    to={`/search/${rowData.id}`}
-                    style={{
-                      textDecoration: "none",
-                      color: "#084c61",
-                      fontWeight: 500,
-                    }}
-                  >
-                    {rowData.address}
-                  </Link>
-                </Button>
+                    rowData.address
               ),
             },
             { title: "Flat Type", field: "flatType", align: "justify" },

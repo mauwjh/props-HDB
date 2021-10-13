@@ -17,8 +17,7 @@ import Search from "@material-ui/icons/Search";
 import ViewColumn from "@material-ui/icons/ViewColumn";
 import Info from "@material-ui/icons/Info";
 import CircularProgress from "@mui/material/CircularProgress";
-import { Link } from "react-router-dom";
-import Button from "@mui/material/Button";
+import { useHistory } from "react-router-dom";
 import { Typography } from "@mui/material";
 
 const tableIcons = {
@@ -42,11 +41,12 @@ const tableIcons = {
   ViewColumn: ViewColumn,
 };
 
-const TransactionTable = (props) => {
-  const [data, setData] = useState([]);
+const TransactionTable = ({mainData, transaction, setNearby}) => {
+  const [data, setData] = useState([])
+  const history = useHistory()
 
   useEffect(() => {
-    const allData = props.data?.map((element, index) => ({
+    const allData = mainData?.map((element) => ({
       id: element._id,
       town: element.town,
       block: element.block,
@@ -56,21 +56,14 @@ const TransactionTable = (props) => {
       squareArea: parseInt(element.floor_area_sqm),
       price: parseInt(element.resale_price),
       address: element.block + " " + element.street_name,
+      month: element.month
     }));
     setData(
-      allData?.filter(
-        (element) =>
-          element.town === props.transaction.town &&
-          element.flatType === props.transaction.flatType &&
-          element.leaseDate === props.transaction.leaseDate
-      )
+      allData?.filter((element) => element.town === transaction.town)
     );
-  }, [
-    props.data,
-    props.transaction.town,
-    props.transaction.flatType,
-    props.transaction.leaseDate,
-  ]);
+    
+    setNearby(allData?.filter(b => b.town === transaction.town && b.leaseDate === transaction.leaseDate && b.flatType === transaction.flatType))
+  }, [mainData, setNearby, transaction.flatType, transaction.leaseDate, transaction.town]);
 
   return (
     <Typography>
@@ -88,6 +81,7 @@ const TransactionTable = (props) => {
       >
         <MaterialTable
           style={{ boxShadow: "none" }}
+          onRowClick={(event, rowData) => {history.push(`/search/${rowData.id}`); window.scrollTo(0, 0)}}
           localization={{
             body: {
               emptyDataSourceMessage: <CircularProgress />,
@@ -99,29 +93,24 @@ const TransactionTable = (props) => {
               title: "Address",
               field: "address",
               render: (rowData) => (
-                <Button>
-                  <Link
-                    to={`/search/${rowData.id}`}
-                    style={{
-                      textDecoration: "none",
-                      color: "#084c61",
-                      fontWeight: 500,
-                    }}
-                  >
-                    {rowData.address}
-                  </Link>
-                </Button>
+                    rowData.address
               ),
             },
             {
               title: "Flat Type",
               field: "flatType",
               align: "justify",
+              defaultFilter: transaction.flatType
+                ? `${transaction.flatType}`
+                : " ",
             },
             {
               title: "Lease Date",
               field: "leaseDate",
               align: "justify",
+              defaultFilter: transaction.leaseDate
+                ? `${transaction.leaseDate}`
+                : " ",
             },
             {
               title: "Size (sqm)",
@@ -142,14 +131,14 @@ const TransactionTable = (props) => {
             exportButton: true,
             filtering: true,
             pageSize: 5,
-            pageSizeOptions: [5,10,50,100,500],
+            pageSizeOptions: [5, 10, 50, 100, 500],
             thirdSortClick: false,
             maxBodyHeight: "50vh",
             header: true,
             showTitle: false,
             search: false,
             draggable: false,
-            showFirstLastPageButtons: false,  
+            showFirstLastPageButtons: false,
             headerStyle: {
               position: "sticky",
               height: 0,

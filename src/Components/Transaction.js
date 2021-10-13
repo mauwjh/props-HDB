@@ -5,18 +5,22 @@ import MapAPI from "./MapAPI";
 import "./Transaction.css";
 import TransactionTable from "./TransactionTables";
 import Typography from '@mui/material/Typography';
+import Dashboard from "./Dashboard";
 
 const Transaction = (props) => {
   const params = useParams().id;
+  const [nearby, setNearby] = useState()
   const [data, setData] = useState([]);
   const [location, setLocation] = useState({});
   const headers = {
     town: "Town",
     price: "Resale Price",
+    pricePerSf: "Price/sqft",
+    squareArea: "Area (sqm)",
     blockNum: "Block Number",
     streetName: "Street Name",
+    storeyRange: "Storey Range",
     flatType: "Flat Type",
-    squareArea: "Area (sqm)",
     leaseDate: "Lease Start Date",
     flatModel: "Flat Model",
     resaleDate: "Transaction Date",
@@ -32,8 +36,9 @@ const Transaction = (props) => {
       town: transaction?.town,
       flatType: transaction?.flat_type,
       leaseDate: transaction?.lease_commence_date,
-      squareArea: parseInt(transaction?.floor_area_sqm),
+      squareArea: transaction?.floor_area_sqm,
       price: parseInt(transaction?.resale_price),
+      pricePerSf: Math.round(transaction?.resale_price / (transaction?.floor_area_sqm * 10.7639)),
       flatModel: transaction?.flat_model,
       blockNum: transaction?.block,
       streetName: transaction?.street_name,
@@ -68,7 +73,7 @@ const Transaction = (props) => {
     <>
       <Typography variant='body1' component='h2'>
       <h2 className='header'>Blk {data.blockNum}, {data?.streetName?.toLowerCase().split(' ').map(a => a.slice(0,1).toUpperCase()+a.slice(1)).join(' ')}</h2>
-      <MapAPI location={location} />
+      <MapAPI location={location}/>
       <div className='header' style={{marginTop: '-0.75%', fontWeight: 400}}>*1km circle radius</div>
       <div className="transaction-container">
         {Object.keys(headers).map((element, index) => {
@@ -77,13 +82,16 @@ const Transaction = (props) => {
               key={index}
               headers={headers[element]}
               values={data[element]}
+              data={data}
+              searchCriteria={element}
             />
           );
         })}
       </div>
-      <h2 className='header' style={{position: 'relative', zIndex: 5}}>Transaction history for similar {data?.flatType?.slice(0,2)+data?.flatType?.slice(2,3)?.toUpperCase()+data?.flatType?.toLowerCase()?.slice(3)} units in {data?.town?.toLowerCase().split(' ').map(a => a.slice(0,1).toUpperCase()+a.slice(1)).join(' ')} Town</h2>
+      <h2 className='header' style={{position: 'relative', zIndex: 5}}>Transaction history for similar units in {data?.town?.toLowerCase().split(' ').map(a => a.slice(0,1).toUpperCase()+a.slice(1)).join(' ')} Town</h2>
       </Typography>
-      <TransactionTable data={props.data} transaction={data} />
+      <TransactionTable mainData={props.data} transaction={data} setNearby={setNearby}/>
+      <Dashboard data={nearby}/>
     </>
   );
 };
