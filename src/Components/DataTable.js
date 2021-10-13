@@ -46,7 +46,7 @@ const DataTable = (props) => {
   const history = useHistory()
 
   return (
-    <Typography>
+    <Typography component='span'>
       <div
         style={{
           position: "relative",

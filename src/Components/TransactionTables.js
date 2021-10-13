@@ -66,7 +66,7 @@ const TransactionTable = ({mainData, transaction, setNearby}) => {
   }, [mainData, setNearby, transaction.flatType, transaction.leaseDate, transaction.town]);
 
   return (
-    <Typography>
+    <Typography component='span'>
       <div
         style={{
           position: "relative",

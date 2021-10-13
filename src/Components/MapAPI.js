@@ -32,8 +32,8 @@ const options = {
 
 const Map = ({ location }) => {
   const center = {
-    lat: location?.lat,
-    lng: location?.lng,
+    lat: parseFloat(location?.lat),
+    lng: parseFloat(location?.lng),
   };
 
   return (

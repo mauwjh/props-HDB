@@ -8,7 +8,7 @@ const Information = ({ headers, values, searchCriteria, data }) => {
 
   return (
     <div className="info-container">
-      <Typography>
+      <Typography component='span'>
         <div className="info-header">{headers}</div>
         <div className="info-value">{
           clickable.includes(searchCriteria) ? searchCriteria === 'blockNum' ? <Link

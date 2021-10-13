@@ -58,20 +58,18 @@ const Transaction = (props) => {
         .then((data) =>
           setLocation({
             address: data.results[0].formatted_address,
-            lat: data.results[0].geometry.location.lat,
-            lng: data.results[0].geometry.location.lng,
+            lat: parseFloat(data.results[0].geometry.location.lat),
+            lng: parseFloat(data.results[0].geometry.location.lng),
           })
         )
         .catch(() => console.log("error"));
     }
   }, [props.data, params, data.blockNum, data.streetName]);
 
-  console.log(location);
-  console.log(data);
 
   return (
     <>
-      <Typography variant='body1' component='h2'>
+      <Typography variant='body1' component='span'>
       <h2 className='header'>Blk {data.blockNum}, {data?.streetName?.toLowerCase().split(' ').map(a => a.slice(0,1).toUpperCase()+a.slice(1)).join(' ')}</h2>
       <MapAPI location={location}/>
       <div className='header' style={{marginTop: '-0.75%', fontWeight: 400}}>*1km circle radius</div>
@@ -88,7 +86,7 @@ const Transaction = (props) => {
           );
         })}
       </div>
-      <h2 className='header' style={{position: 'relative', zIndex: 5}}>Transaction history for similar units in {data?.town?.toLowerCase().split(' ').map(a => a.slice(0,1).toUpperCase()+a.slice(1)).join(' ')} Town</h2>
+      <h2 className='header' style={{position: 'relative', zIndex: 5, paddingLeft: '20px'}}>Transaction history for similar units in {data?.town?.toLowerCase().split(' ').map(a => a.slice(0,1).toUpperCase()+a.slice(1)).join(' ')} Town</h2>
       </Typography>
       <TransactionTable mainData={props.data} transaction={data} setNearby={setNearby}/>
       <Dashboard data={nearby}/>

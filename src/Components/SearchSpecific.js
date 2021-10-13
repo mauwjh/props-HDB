@@ -43,13 +43,9 @@ const SearchSpecific = ({ data }) => {
     );
   }, [data, paramsKey, paramsValue]);
 
-  console.log(paramsKey);
-  console.log(params);
-  console.log(dataSet);
-
   return (
     <div>
-      <Typography variant='body1' component='h2'>
+      <Typography variant='body1' component='div'>
       <h2>
         Now showing units with {paramsHeader} of {paramsValue}
       </h2>

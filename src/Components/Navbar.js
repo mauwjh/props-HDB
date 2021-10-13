@@ -12,7 +12,7 @@ export default function ButtonAppBar() {
     <Box sx={{ flexGrow: 1, minWidth: '100%' }}>
       <AppBar position="static">
         <Toolbar sx={{ width: '80%', maxWidth: '1800px', margin: '0 auto', height: '80px' }}>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1, fontWeight: 600, }}>
+          <Typography variant="h6" component="span" sx={{ flexGrow: 1, fontWeight: 600, }}>
             HDB-PROPS
           </Typography>
           <Button color="inherit"><Link to='/' style={{textDecoration: 'none', color: 'inherit'}}>Dashboard</Link></Button>
