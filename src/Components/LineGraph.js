@@ -6,7 +6,8 @@ const LineGraph = ({ data }) => (
         <ResponsiveLine
             theme={{"textColor": "#084c61", fontSize: 'clamp(0.5rem, 2.5vw, 0.8rem)', fontFamily: 'mulish'}}
           data={data}
-          margin={{ top: 50, right: 50, bottom: 150, left: 60 }}
+          height={400}
+          margin={{ top: 40, right: 50, bottom: 130, left: 60 }}
           xScale={{ type: "point" }}
           yScale={{
             type: "linear",

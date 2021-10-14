@@ -72,8 +72,8 @@ const HomeGraph = ({data, town}) => {
       <div
         style={{
           margin: "0 auto",
-          height: "45vh",
-          minHeight: "35vh",
+          height: "55vh",
+          minHeight: "55vh",
           marginBottom: "3%",
           width: "80%",
           maxWidth: "1800px",
@@ -83,7 +83,7 @@ const HomeGraph = ({data, town}) => {
           boxSizing: 'border-box'
         }}
       >
-        <h2 style={{ marginBottom: "-20px", marginTop: '25px', width: "100%", textAlign: "left",fontSize: 'clamp(1rem, 2.5vw, 1.5rem)' }}>
+        <h2 style={{ marginBottom: "-20px", marginTop: '25px', width: "100%", textAlign: "left",fontSize: 'clamp(1rem, 2.5vw, 1.3rem)' }}>
           Average Yearly Price for Units in {town} Town
         </h2>
         <LineGraph data={graphData} />
@@ -91,8 +91,8 @@ const HomeGraph = ({data, town}) => {
       <div
         style={{
           margin: "0 auto",
-          height: "45vh",
-          minHeight: "35vh",
+          height: "55vh",
+          minHeight: "55vh",
           marginBottom: "3%",
           width: "80%",
           maxWidth: "1800px",
@@ -102,7 +102,7 @@ const HomeGraph = ({data, town}) => {
           boxSizing: 'border-box'
         }}
       >
-        <h2 style={{ marginBottom: "-20px", marginTop: '25px', width: "100%", textAlign: "left", fontSize: 'clamp(1rem, 2.5vw, 1.5rem)'}}>
+        <h2 style={{ marginBottom: "-20px", marginTop: '25px', width: "100%", textAlign: "left", fontSize: 'clamp(1rem, 2.5vw, 1.3rem)'}}>
           Number of Annual Transactions in {town} Town
         </h2>
         <LineGraph data={countData} />
