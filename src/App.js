@@ -12,9 +12,10 @@ import "@fontsource/mulish/300.css";
 import "@fontsource/mulish/400.css";
 import "@fontsource/mulish/500.css";
 import "@fontsource/mulish/700.css";
-import Dashboard from "./Components/Dashboard";
 import SearchSpecific from "./Components/SearchSpecific";
 import Search from "./Components/Search";
+import Home from "./Components/Home";
+import About from "./Components/About";
 
 let theme = createTheme({
   typography: {
@@ -71,8 +72,11 @@ function App() {
             <Route path="/search">
               <Search data={data?.records} />
             </Route>
+            <Route path="/about">
+              <About />
+            </Route>
             <Route path="/">
-              <Dashboard data={data?.records} />
+              <Home data={data?.records}/>
             </Route>
           </Switch>
         </main>

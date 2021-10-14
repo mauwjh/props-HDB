@@ -16,6 +16,8 @@ const Search = (props) => {
         squareArea: parseInt(element.floor_area_sqm),
         price: parseInt(element.resale_price),
         address: element.block + " " + element.street_name,
+        month: element.month,
+        storeyRange: element.storey_range
       }))
     );
   }, [props.data]);

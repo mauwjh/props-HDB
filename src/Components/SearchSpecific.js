@@ -36,6 +36,7 @@ const SearchSpecific = ({ data }) => {
           squareArea: parseInt(element.floor_area_sqm),
           price: parseInt(element.resale_price),
           address: element.block + " " + element.street_name,
+          month: element.month
         }))
         .filter(
           (element) => element[paramsKey].toString() === paramsValue.toString()

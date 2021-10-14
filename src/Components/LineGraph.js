@@ -1,49 +1,21 @@
-// import React from "react";
-// import { VictoryLine, VictoryChart, VictoryAxis, VictoryTheme } from "victory";
-
-// const LineGraph = ({ data, minValue }) => {
-//     return (
-//     <div style={{ maxWidth: "50%", margin: "0 auto", marginBottom: '2%', border: '1px solid #bcdbdc', borderRadius: '5px', fontSize: '8px' }}>
-//       <VictoryChart minDomain={{ y: minValue }} height={200} theme={VictoryTheme.material}>
-//         <VictoryLine
-//           labels={({ datum }) => datum.y}
-//           style={{
-//             data: { stroke: "#4f6d7a" },
-//             parent: { border: "1px solid #fefefe" },
-//           }}
-//           data={data}
-//         />
-//         <VictoryAxis
-//           style={{
-//             axis: { stroke: "transparent" },
-//             ticks: { stroke: "transparent" },
-//           }}
-//         />
-//       </VictoryChart>
-//     </div>
-//   );
-// };
-
-// export default LineGraph;
-
 import React from "react";
 import { ResponsiveLine } from "@nivo/line";
 import "@fontsource/mulish/400.css";
 
 const LineGraph = ({ data }) => (
         <ResponsiveLine
-            theme={{"textColor": "#084c61", fontSize: '13px', fontFamily: 'mulish'}}
+            theme={{"textColor": "#084c61", fontSize: 'clamp(0.5rem, 2.5vw, 0.8rem)', fontFamily: 'mulish'}}
           data={data}
-          margin={{ top: 50, right: 40, bottom: 125, left: 60 }}
+          margin={{ top: 50, right: 50, bottom: 150, left: 60 }}
           xScale={{ type: "point" }}
           yScale={{
             type: "linear",
             min: "auto",
             max: "auto",
-            stacked: true,
+            stacked: false,
             reverse: false,
           }}
-          yFormat=" >-.2f"
+          yFormat=" >-,.0f"
           axisTop={null}
           axisRight={null}
           axisBottom={{
@@ -62,7 +34,33 @@ const LineGraph = ({ data }) => (
           pointLabelYOffset={-12}
           useMesh={true}
           enableGridX={false}
-          curve={"linear"}
+          curve={"natural"}
+          legends={[
+            {
+                anchor: 'bottom',
+                direction: 'row',
+                justify: false,
+                translateX: 0,
+                translateY: 70,
+                itemsSpacing: 0,
+                itemDirection: 'left-to-right',
+                itemWidth: 78,
+                itemHeight: 20,
+                itemOpacity: 0.75,
+                symbolSize: 12,
+                symbolShape: 'circle',
+                symbolBorderColor: 'rgba(0, 0, 0, .5)',
+                effects: [
+                    {
+                        on: 'hover',
+                        style: {
+                            itemBackground: 'rgba(0, 0, 0, .03)',
+                            itemOpacity: 1
+                        }
+                    }
+                ]
+            }
+        ]}
         />
 );
 

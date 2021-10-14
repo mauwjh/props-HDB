@@ -42,11 +42,11 @@ const tableIcons = {
 };
 
 const DataTable = (props) => {
-  const data = props.data
-  const history = useHistory()
+  const data = props.data;
+  const history = useHistory();
 
   return (
-    <Typography component='span'>
+    <Typography component="span">
       <div
         style={{
           position: "relative",
@@ -59,8 +59,8 @@ const DataTable = (props) => {
         }}
       >
         <MaterialTable
-          style={{ boxShadow: "none" }}
-          onRowClick={(event, rowData) => history.push(`/search/${rowData.id}`)}
+          style={{ boxShadow: "none", marginBottom: "3%", }}
+          onRowClick={(event, rowData) => {history.push(`/search/${rowData.id}`);  window.scrollTo(0, 0)}}
           localization={{
             body: {
               emptyDataSourceMessage: <CircularProgress />,
@@ -68,15 +68,28 @@ const DataTable = (props) => {
           }}
           icons={tableIcons}
           columns={[
-            { title: "Town", field: "town", align: "justify", defaultSort: "asc", },
+            {
+              title: "Date",
+              field: "month",
+              align: "justify",
+              defaultSort: "desc",
+            },
+            {
+              title: "Town",
+              field: "town",
+              align: "justify",
+            },
             {
               title: "Address",
               field: "address",
-              render: (rowData) => (
-                    rowData.address
-              ),
+              render: (rowData) => rowData.address,
             },
             { title: "Flat Type", field: "flatType", align: "justify" },
+            {
+              title: "Storey Range",
+              field: "storeyRange",
+              align: "justify",
+            },
             { title: "Lease Date", field: "leaseDate", align: "justify" },
             { title: "Size (sqm)", field: "squareArea", align: "justify" },
             {
@@ -91,7 +104,7 @@ const DataTable = (props) => {
           options={{
             exportButton: true,
             filtering: true,
-            pageSize: 10,
+            pageSize: 5,
             pageSizeOptions: [5, 10, 50, 100, 500],
             thirdSortClick: false,
             draggable: false,

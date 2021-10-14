@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  GoogleMap,
-  LoadScript,
-  Circle,
-} from "@react-google-maps/api";
+import { GoogleMap, Circle } from "@react-google-maps/api";
 import RedMarker from "./RedMarker";
 
 const containerStyle = {
@@ -37,12 +33,10 @@ const Map = ({ location }) => {
   };
 
   return (
-    <LoadScript googleMapsApiKey={process.env.REACT_APP_API_KEY}>
-      <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={16}>
-        <Circle center={center} options={options} />
-        <RedMarker center={center} />
-      </GoogleMap>
-    </LoadScript>
+    <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={16}>
+      <Circle center={center} options={options} />
+      <RedMarker center={center} />
+    </GoogleMap>
   );
 };
 

@@ -48,7 +48,7 @@ const Dashboard = ({ data }) => {
           boxSizing: 'border-box'
         }}
       >
-        <h2 style={{ marginBottom: "-20px", marginTop: '25px', width: "100%", textAlign: "left",}}>
+        <h2 style={{ marginBottom: "-20px", marginTop: '25px', width: "100%", textAlign: "left", fontSize: 'clamp(1.2rem, 2.5vw, 1.5rem)'}}>
           Average Transaction Price for Similar Units
         </h2>
         <LineGraph data={salesPerMonth} />

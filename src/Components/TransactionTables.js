@@ -42,7 +42,7 @@ const tableIcons = {
 };
 
 const TransactionTable = ({mainData, transaction, setNearby}) => {
-  const [data, setData] = useState([])
+  const [data, setData] = useState([]) 
   const history = useHistory()
 
   useEffect(() => {
@@ -56,7 +56,8 @@ const TransactionTable = ({mainData, transaction, setNearby}) => {
       squareArea: parseInt(element.floor_area_sqm),
       price: parseInt(element.resale_price),
       address: element.block + " " + element.street_name,
-      month: element.month
+      month: element.month,
+      storeyRange: element.storey_range
     }));
     setData(
       allData?.filter((element) => element.town === transaction.town)
@@ -90,6 +91,12 @@ const TransactionTable = ({mainData, transaction, setNearby}) => {
           icons={tableIcons}
           columns={[
             {
+              title: "Date",
+              field: "month",
+              align: "justify",
+              defaultSort: "desc",
+            },
+            {
               title: "Address",
               field: "address",
               render: (rowData) => (
@@ -103,6 +110,11 @@ const TransactionTable = ({mainData, transaction, setNearby}) => {
               defaultFilter: transaction.flatType
                 ? `${transaction.flatType}`
                 : " ",
+            },
+            {
+              title: "Storey Range",
+              field: "storeyRange",
+              align: "justify",
             },
             {
               title: "Lease Date",
@@ -121,7 +133,6 @@ const TransactionTable = ({mainData, transaction, setNearby}) => {
               title: "Price",
               field: "price",
               align: "justify",
-              defaultSort: "desc",
               render: (rowData) => `S$${rowData?.price?.toLocaleString()}`,
             },
           ]}

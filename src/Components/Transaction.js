@@ -5,7 +5,7 @@ import MapAPI from "./MapAPI";
 import "./Transaction.css";
 import TransactionTable from "./TransactionTables";
 import Typography from '@mui/material/Typography';
-import Dashboard from "./Dashboard";
+import TransactionGraph from "./TransactionGraph";
 
 const Transaction = (props) => {
   const params = useParams().id;
@@ -44,6 +44,7 @@ const Transaction = (props) => {
       streetName: transaction?.street_name,
       resaleDate: transaction?.month,
       storeyRange: transaction?.storey_range,
+      month: transaction?.month,
     });
 
     const address = `${data?.blockNum}+${data?.streetName
@@ -70,9 +71,9 @@ const Transaction = (props) => {
   return (
     <>
       <Typography variant='body1' component='span'>
-      <h2 className='header'>Blk {data.blockNum}, {data?.streetName?.toLowerCase().split(' ').map(a => a.slice(0,1).toUpperCase()+a.slice(1)).join(' ')}</h2>
+      <h2 className='header' style={{fontSize: 'clamp(1.2rem, 2.5vw, 1.5rem)'}}>Blk {data.blockNum}, {data?.streetName?.toLowerCase().split(' ').map(a => a.slice(0,1).toUpperCase()+a.slice(1)).join(' ')}</h2>
       <MapAPI location={location}/>
-      <div className='header' style={{marginTop: '-0.75%', fontWeight: 400}}>*1km circle radius</div>
+      <div className='header' style={{marginTop: '-0.75%', fontWeight: 400, fontSize: 'clamp(0.7rem, 2.5vw, 1rem)'}}>*1km circle radius</div>
       <div className="transaction-container">
         {Object.keys(headers).map((element, index) => {
           return (
@@ -86,10 +87,10 @@ const Transaction = (props) => {
           );
         })}
       </div>
-      <h2 className='header' style={{position: 'relative', zIndex: 5, paddingLeft: '20px'}}>Transaction history for similar units in {data?.town?.toLowerCase().split(' ').map(a => a.slice(0,1).toUpperCase()+a.slice(1)).join(' ')} Town</h2>
+      <h2 className='header' style={{position: 'relative', zIndex: 5, paddingLeft: '20px', fontSize: 'clamp(1.2rem, 2.5vw, 1.5rem)'}}>Transaction history for similar units in {data?.town?.toLowerCase().split(' ').map(a => a.slice(0,1).toUpperCase()+a.slice(1)).join(' ')} Town</h2>
       </Typography>
       <TransactionTable mainData={props.data} transaction={data} setNearby={setNearby}/>
-      <Dashboard data={nearby}/>
+      <TransactionGraph data={nearby}/>
     </>
   );
 };
