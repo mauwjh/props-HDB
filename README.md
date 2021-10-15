@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+# Props-HDB
+Props-HDB is an application built using ReactJS that compiles historical resale HDB property transactions and breaks it down into graphs using data visualisation components.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About
+The objective of this application is to provide users with an overview of historical price trends for HDBs across HDB towns and allow users to make educated decisions on potential HDB transactions. 
 
-## Available Scripts
+### Technologies
+This site was created using ReactJS
 
-In the project directory, you can run:
+Autocomplete: react-places-autocomplete
+Maps: react-google-maps
+Tables: material-table
+Styling: Material-UI
+Graphs: nivo
 
-### `npm start`
+HDB resale price data from data.gov.sg API
+Geocoding and maps from Google API
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#### APIs
+https://data.gov.sg/dataset/resale-flat-prices (For transaction data)
+https://developers.google.com/maps/documentation/javascript/overview (For geocoding and autocomplete)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+##### User Story
+1) User will be able to see summary statistics of recent HDB transactions and overall price trends via the landing page
+2) User will be able to click on the Search button in the navbar to link to the search component
+3) Within the search component, the user will be able to search for HDB transactions
+4) The user will be able to double click on each transaction to view more information about the property such as floor range, square area, flat model, and location on the map (map geotagging is a bonus)
 
-### `npm test`
+##### Wireframes
+Search Component
+![plot](./Images/SearchComponent.jpg)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Transaction Component
+![plot](./Images/TransactionComponent.jpg)
