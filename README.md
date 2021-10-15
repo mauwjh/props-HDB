@@ -28,7 +28,7 @@ https://developers.google.com/maps/documentation/javascript/overview (For geocod
 
 ## Wireframes
 Search Component
-![plot](images/SearchComponent.jpg)
+![](Images/SearchComponent.jpg)
 
 Transaction Component
-![plot](images/TransactionComponent.jpg)
+![](Images/TransactionComponent.jpg)
