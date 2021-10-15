@@ -14,7 +14,7 @@ export default function ButtonAppBar() {
       <AppBar position="static">
         <Toolbar sx={{ width: '80%', maxWidth: '1800px', margin: '0 auto', height: '80px' }}>
           <Typography variant="h6" component="span" sx={{ flexGrow: 1, fontWeight: 600, }}>
-          <Link to='/' style={{textDecoration: 'none', color: 'inherit'}} onClick={() => {window.location.href='/'}}><Button color="inherit">HDB-PROPS</Button></Link>
+          <Link to='/' style={{textDecoration: 'none', color: 'inherit'}} onClick={() => {window.location.href='/'}}><Button color="inherit">PROPS-HDB</Button></Link>
           </Typography>
           <Link to='/' style={{textDecoration: 'none', color: 'inherit'}} onClick={() => {window.location.href='/'}}><Button color="inherit">Home</Button></Link>
           <Link to='/search' style={{textDecoration: 'none', color: 'inherit'}}><Button color="inherit">Search</Button></Link>
