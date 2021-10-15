@@ -7,11 +7,11 @@ The objective of this application is to provide users with an overview of histor
 ## Technologies
 This site was created using ReactJS
 
-Autocomplete: react-places-autocomplete  
-Maps: react-google-maps  
-Tables: material-table  
-Styling: Material-UI  
-Graphs: nivo  
+**Autocomplete**: react-places-autocomplete  
+**Maps**: react-google-maps  
+**Tables**: material-table  
+**Styling**: Material-UI  
+**Graphs**: nivo  
 
 HDB resale price data from data.gov.sg API  
 Geocoding and maps from Google API  
