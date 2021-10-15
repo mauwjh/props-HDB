@@ -37,8 +37,8 @@ const Dashboard = ({ data }) => {
       <div
         style={{
           margin: "0 auto",
-          height: "55vh",
-          minHeight: "55vh",
+          height: "400px",
+          minHeight: "400px",
           marginBottom: "3%",
           width: "80%",
           maxWidth: "1800px",

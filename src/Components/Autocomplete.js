@@ -13,7 +13,7 @@ const Autocomplete = ({setLocation, setTown, setCountry}) => {
     const latLng = await getLatLng(results[0]);
     setLocation(latLng)
     setTown(results[0]?.address_components?.filter(a => a.types[0].toString() === 'neighborhood')[0]?.long_name)
-    setCountry(results[0]?.address_components.filter(a => a.types[0].toString() === 'country')[0]?.long_name)
+    setCountry(results[0]?.address_components?.filter(a => a.types[0].toString() === 'country')[0]?.long_name)
     setAddress(value);
   };
 
