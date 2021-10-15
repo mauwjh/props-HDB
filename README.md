@@ -27,8 +27,8 @@ https://developers.google.com/maps/documentation/javascript/overview (For geocod
 4) The user will be able to double click on each transaction to view more information about the property such as floor range, square area, flat model, and location on the map (map geotagging is a bonus)
 
 ## Wireframes
-Search Component
+* Search Component
 ![](src/Images/SearchComponent.jpg)
 
-Transaction Component
+* Transaction Component
 ![](src/Images/TransactionComponent.jpg)
