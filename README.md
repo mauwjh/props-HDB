@@ -5,16 +5,16 @@ Props-HDB is an application built using ReactJS that compiles historical resale 
 The objective of this application is to provide users with an overview of historical price trends for HDBs across HDB towns and allow users to make educated decisions on potential HDB transactions. 
 
 ## Technologies
-*This site was created using ReactJS
+* This site was created using ReactJS
 
-*Autocomplete: react-places-autocomplete
-*Maps: react-google-maps
-*Tables: material-table
-*Styling: Material-UI
-*Graphs: nivo
+* Autocomplete: react-places-autocomplete
+* Maps: react-google-maps
+* Tables: material-table
+* Styling: Material-UI
+* Graphs: nivo
 
-*HDB resale price data from data.gov.sg API
-*Geocoding and maps from Google API
+* HDB resale price data from data.gov.sg API
+* Geocoding and maps from Google API
 
 ## APIs
 https://data.gov.sg/dataset/resale-flat-prices (For transaction data)
@@ -28,7 +28,7 @@ https://developers.google.com/maps/documentation/javascript/overview (For geocod
 
 ## Wireframes
 Search Component
-![plot](/Images/SearchComponent.jpg)
+![plot](images/SearchComponent.jpg)
 
 Transaction Component
-![plot](/Images/TransactionComponent.jpg)
+![plot](images/TransactionComponent.jpg)
