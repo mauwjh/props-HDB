@@ -4,7 +4,7 @@ Props-HDB is an application built using ReactJS that compiles historical resale 
 ## About
 The objective of this application is to provide users with an overview of historical price trends for HDBs across HDB towns and allow users to make educated decisions on potential HDB transactions. 
 
-## Technologies
+## Tech Stack
 This site was created using ReactJS
 
 **Autocomplete**: react-places-autocomplete  
